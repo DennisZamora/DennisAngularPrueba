@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Agregar nueva factura</h1>
+<div mat-dialog-content>
+    <form>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Numero de factura</mat-label>
+          <input  [(ngModel)]="numero_factura"  name="numero_factura" matInput type="number" placeholder="Numero">
+        </mat-form-field>
+         <mat-form-field appearance="fill">
+          <mat-label>Fecha</mat-label>
+          <input [(ngModel)]="fecha" name="fecha" matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>      
+      </div>
+      
+        
+   
+    <div mat-dialog-actions [align]="'end'">
+        <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+        <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="postFactura(this.numero_factura, this.fecha)">Guardar</button>
+     </div>
+    </form>
+
+</div>
+

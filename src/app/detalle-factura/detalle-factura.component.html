@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Agregar detalle</h1>
+<div mat-dialog-content>
+          <form>
+            <mat-form-field appearance="fill">
+              <mat-label>Producto</mat-label>
+              <mat-select [(ngModel)]="codigoSeleccionado" name="codigoSeleccionado">
+                <mat-option  *ngFor="let opciones of listaProducto[0]" [value]="opciones.CODIGO_ARTICULO">
+                  {{ opciones.DESCRIPCION }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+      </form>
+          <mat-form-field appearance="outline">
+            <mat-label>Cantidad</mat-label>
+            <input [(ngModel)]="cantidad" name="cantidad" matInput type="number" placeholder="Cantidad">
+          </mat-form-field>
+    <div mat-dialog-actions [align]="'end'">
+        <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+        <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="postDetalleFactura(this.codigoSeleccionado,this.cantidad)">Guardar</button>
+              </div>
+
+</div>

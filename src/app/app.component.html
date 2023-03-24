@@ -1,0 +1,45 @@
+
+  <mat-toolbar color="primary">
+  <span>Creación de facturas</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+<br>
+
+<div class="btnContainer">
+  <div class="col">
+    <button mat-raised-button color="warn" (click)="openFacturaDialog()">Nueva factura</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="openDetalleFacturaDialog()">Nuevo producto</button>
+  </div>  
+</div>
+<br>
+
+  <div class="container">
+    <div style="margin-top: 10px;">
+
+      <div class="mat-elevation-z8">
+        <table class="table table-hover table-dark">
+          
+          <thead>
+            <th scope="col">Código</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Total</th>
+            <th scope="col">Acción</th>
+          </thead>
+          <tbody>
+             <tr *ngFor="let detalle of listaDetalleFactura[0]">
+              <th scope="row">{{detalle.CODIGO_ARTICULO}}</th>
+              <th scope="row">{{detalle.ARTICULO}}</th>
+              <th scope="row">{{detalle.CANTIDAD}}</th>
+              <th scope="row">{{detalle.PRECIO}}</th>
+              <th scope="row">{{detalle.TOTAL_LINEA}}</th>
+              <th scope="row"><button (click)="deleteDetalleFactura(detalle.CODIGO_ARTICULO,1,detalle.ARTICULO)" color="warn">
+                <mat-icon>delete</mat-icon>
+              </button></th>
+            </tr>
+          </tbody>
+        </table>  
+      </div>
+    </div>
+  </div>
