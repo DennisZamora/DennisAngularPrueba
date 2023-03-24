@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { DetalleFactura } from '../Interfaces/detalle-factura';
-import { Factura } from '../Interfaces/factura';
-import { ListaDetalleFactura } from '../Interfaces/lista-detalle-factura';
 
 @Injectable({
   providedIn: 'root'

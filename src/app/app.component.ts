@@ -3,7 +3,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { ApiService } from './services/api.service';
 import { DetalleFacturaComponent } from './detalle-factura/detalle-factura.component';
 import { FacturaComponent } from './factura/factura.component';
-import { ListaDetalleFactura } from './Interfaces/lista-detalle-factura';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -15,10 +15,12 @@ export class AppComponent implements OnInit{
   public p_num_factura : number= 0;
   title = 'PruebaDennis';
   listaDetalleFactura: any[] = [];
-  constructor(private dialog: MatDialog, private api : ApiService){}
+  numero_factura: string = "";
+  constructor(private dialog: MatDialog, private api : ApiService,private cookieService: CookieService){}
 
   ngOnInit(): void {
-    this.api.getDetalleFactura(3234).subscribe(data =>{
+    this.numero_factura = this.cookieService.get('numero_factura').toString();
+    this.api.getDetalleFactura(Number(this.numero_factura)).subscribe(data =>{
        this.listaDetalleFactura = Object.values(data);
        console.log(this.listaDetalleFactura)
     })
@@ -44,8 +46,9 @@ export class AppComponent implements OnInit{
   /// Linea->Numero de linea de la factura
   /// NumeroFactura -> El numero de la factura
   /// nombreProducto -> El nombre del prodcuto
-  deleteDetalleFactura(linea: number,numeroFactura : number,nombreProducto:string){
-    this.api.deleteDetalleFactura(linea,numeroFactura)
+  deleteDetalleFactura(linea: number,nombreProducto:string){
+    this.numero_factura = this.cookieService.get('numero_factura').toString();
+    this.api.deleteDetalleFactura(linea,Number(this.numero_factura))
     .subscribe({
       next:(res)=>{
         alert('La linea *'+linea+'* del producto *'+nombreProducto+'*fue eliminada')

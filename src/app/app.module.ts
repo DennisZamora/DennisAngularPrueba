@@ -22,6 +22,7 @@ import { DetalleFacturaComponent } from './detalle-factura/detalle-factura.compo
 import { FacturaComponent } from './factura/factura.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

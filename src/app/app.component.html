@@ -34,7 +34,7 @@
               <th scope="row">{{detalle.CANTIDAD}}</th>
               <th scope="row">{{detalle.PRECIO}}</th>
               <th scope="row">{{detalle.TOTAL_LINEA}}</th>
-              <th scope="row"><button (click)="deleteDetalleFactura(detalle.CODIGO_ARTICULO,1,detalle.ARTICULO)" color="warn">
+              <th scope="row"><button (click)="deleteDetalleFactura(detalle.CODIGO_ARTICULO,detalle.ARTICULO)" color="warn">
                 <mat-icon>delete</mat-icon>
               </button></th>
             </tr>
